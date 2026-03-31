@@ -1,1 +1,23 @@
+-- Average ride length in minutes by rider type
+SELECT
+  member_casual,
+  AVG(ride_length_seconds)/60 AS avg_minutes
+FROM `avian-chariot-468015-b9.city_bike.cyclistic_2023_enriched`
+GROUP BY member_casual;
 
+-- Rides by day of week
+SELECT
+  day_of_week,
+  member_casual,
+  COUNT(*) AS rides
+FROM `avian-chariot-468015-b9.city_bike.cyclistic_2023_enriched`
+GROUP BY day_of_week, member_casual
+ORDER BY rides DESC;
+
+-- Total rides by rider type
+SELECT
+  member_casual,
+  COUNT(*) AS total_rides
+FROM `avian-chariot-468015-b9.city_bike.cyclistic_2023_enriched`
+GROUP BY member_casual
+ORDER BY total_rides DESC;
